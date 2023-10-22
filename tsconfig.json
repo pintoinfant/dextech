@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/contact.jsx", "components/Index/BetaSignUp.jsx", "pages/api/topics/create.ts", "pages/api/all-apis", "pages/home.jsx", "pages/register-charger.jsx", "utilities/contractDetails.ts", "electra-contracts/cache_service.js", "components/Utilities/ApplicationLayout.jsx", "pages/_app.jsx", "pages/top-traders.jsx", "components/Header.jsx"],
+  "exclude": ["node_modules"]
+}
