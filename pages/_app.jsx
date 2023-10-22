@@ -63,7 +63,7 @@ export default function App({ Component, pageProps }) {
   const [ready, setReady] = useState(false);
 
   const { publicClient, chains } = configureChains(
-    [mainnet, SepoliaEVM],
+    [mainnet, MumbaiEVM],
     [publicProvider()]
   );
 
