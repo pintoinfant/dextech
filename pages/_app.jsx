@@ -12,6 +12,15 @@ import "@rainbow-me/rainbowkit/styles.css";
 import "@/styles/globals.css";
 import "@/styles/index.scss";
 import WalletContext from "@/contexts/WalletContext";
+import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import {
+  injectedWallet,
+  rainbowWallet,
+  walletConnectWallet,
+  coin98Wallet ,   
+  metaMaskWallet,
+  coinbaseWallet,
+} from '@rainbow-me/rainbowkit/wallets';
 
 const MumbaiEVM = {
   id: 80001,
@@ -63,15 +72,29 @@ export default function App({ Component, pageProps }) {
   const [ready, setReady] = useState(false);
 
   const { publicClient, chains } = configureChains(
-    [mainnet, MumbaiEVM],
+    [mainnet, SepoliaEVM],
     [publicProvider()]
   );
 
-  const { connectors } = getDefaultWallets({
-    appName: "DexTech",
-    projectId: "68c961d33487e0adae591fc2bccae7b3",
-    chains,
-  });
+  // const { connectors } = getDefaultWallets({
+  //   appName: "DexTech",
+  //   projectId: "68c961d33487e0adae591fc2bccae7b3",
+  //   chains,
+  // });
+
+  const connectors = connectorsForWallets([
+    {
+      groupName: 'DexTech',
+      wallets: [
+        coin98Wallet({projectId : "68c961d33487e0adae591fc2bccae7b3", chains}),
+        metaMaskWallet({projectId : "68c961d33487e0adae591fc2bccae7b3", chains}),
+        coinbaseWallet({projectId : "68c961d33487e0adae591fc2bccae7b3", chains}),
+        injectedWallet({ chains }),
+        rainbowWallet({ projectId : "68c961d33487e0adae591fc2bccae7b3", chains }),
+        walletConnectWallet({ projectId : "68c961d33487e0adae591fc2bccae7b3", chains }),
+      ],
+    }])
+  
 
   const wagmiConfig = createConfig({
     autoConnect: true,
